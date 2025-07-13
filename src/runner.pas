@@ -8,6 +8,7 @@ interface
 
 uses
 	shared,
+	SysUtils,
 	Types;
 
 type
@@ -30,14 +31,20 @@ function Compile(
 	const source: String;
 	constref args: TStringDynArray
 ): TCompileResult;
+var
+	passedArgs: TStringDynArray;
+	exitCode: Integer;
 begin
-	result.success := True;
-	result.bin := 'tests/' + source + '.test';
+	CreateDir(OBJS_DIR);
+	result.bin := source + '.test';
+	exitCode := ExecuteProcess(FPC_BIN, [source, '-o' + result.bin] + args);
+
+	result.success := exitCode = 0;
 end;
 
 function Run(const bin: String; constref args: TStringDynArray): Integer;
 begin
-	result := 0;
+	result := ExecuteProcess(bin, args);
 end;
 
 end.

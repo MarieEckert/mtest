@@ -14,6 +14,9 @@ type
 	TTestSet = array of TTest;
 
 const
+	FPC_BIN = '/usr/bin/fpc';
+	OBJS_DIR = 'test_objs/';
+
 	tests: TTestSet = [
 		(
 			name: 'basic';
