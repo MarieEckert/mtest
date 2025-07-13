@@ -35,7 +35,6 @@ var
 	passedArgs: TStringDynArray;
 	exitCode: Integer;
 begin
-	CreateDir(OBJS_DIR);
 	result.bin := source + '.test';
 	exitCode := ExecuteProcess(FPC_BIN, [source, '-o' + result.bin] + args);
 
