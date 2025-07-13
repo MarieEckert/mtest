@@ -15,7 +15,6 @@ type
 
 const
 	FPC_BIN = '/usr/bin/fpc';
-	OBJS_DIR = 'test_objs/';
 
 	tests: TTestSet = [
 		(
