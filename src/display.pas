@@ -10,15 +10,11 @@ uses
 	shared,
 	Types;
 
-procedure TargetHeader(
-	constref targets: TStringDynArray;
-	const padding: Integer
-);
+procedure TargetHeader(const padding: Integer);
 
 procedure ResultRow(constref tests: TResultsSet);
 
 procedure Summary(
-	constref targets: TStringDynArray;
 	constref tests: TResultsSet;
 	const padding: Integer
 );
@@ -35,17 +31,14 @@ begin
 		Write(text);
 end;
 
-procedure TargetHeader(
-	constref targets: TStringDynArray;
-	const padding: Integer
-);
+procedure TargetHeader(const padding: Integer);
 var
-ix: Integer;
-	target: String;
+	ix: Integer;
+	target: TTarget;
 begin
 	ix := 0;
 
-	for target in targets do
+	for target in TTarget do
 	begin
 		WriteIndent(padding, ' ');
 		WriteIndent(ix - 1, ' |');
@@ -97,12 +90,12 @@ begin
 end;
 
 procedure Summary(
-	constref targets: TStringDynArray;
 	constref tests: TResultsSet;
 	const padding: Integer
 );
 var
 	ix, lines: Integer;
+	lastTarget: String;
 
 	procedure StatusLine(
 		const status: TStatus;
@@ -115,11 +108,13 @@ var
 	end;
 
 begin
+	WriteStr(lastTarget, High(TTarget));
+
 	lines := (
 		  padding
 		+ 6
 		+ Length(tests[HIGH(tests)].status) * 2
-		+ Length(targets[HIGH(targets)])
+		+ Length(lastTarget)
 	);
 
 	WriteLn;
