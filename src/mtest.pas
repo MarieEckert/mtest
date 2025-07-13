@@ -90,6 +90,6 @@ begin
 
 	WriteLn;
 	TargetHeader(padding + 6);
-	ResultRow(results);
+	ResultRow(results, padding);
 	Summary(results, padding);
 end.

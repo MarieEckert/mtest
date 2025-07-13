@@ -12,7 +12,7 @@ uses
 
 procedure TargetHeader(const padding: Integer);
 
-procedure ResultRow(constref tests: TResultsSet);
+procedure ResultRow(constref tests: TResultsSet; const padding: Integer);
 
 procedure Summary(
 	constref tests: TResultsSet;
@@ -60,14 +60,15 @@ begin
 	end;
 end;
 
-procedure ResultRow(constref tests: TResultsSet);
+procedure ResultRow(constref tests: TResultsSet; const padding: Integer);
 var
 	test: TTestResults;
 	status: TStatus;
 begin
 	for test in tests do
 	begin
-		Write('    ', test.name, ' => ');
+		Write('    ', test.name, StringOfChar(' ', padding - Length(test.name)),
+			  ' => ');
 
 		for status in test.status do
 			ShowStatus(status);
