@@ -10,7 +10,7 @@ uses
 
 var
 	targets: TStringDynArray = ['x86_64', 'riscv', 'aarch64', 'powerpc'];
-	tests: TTestSet = [
+	tests: TResultsSet = [
 		(name: 'a'; status: [RunPassed, BuildFailed, BuildFailed, Ignored]),
 		(name: 'b'; status: [RunFailed, Ignored, Ignored, BuildPassed]),
 		(name: 'c'; status: [BuildFailed, BuildPassed, Ignored, Ignored]),

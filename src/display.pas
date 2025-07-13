@@ -15,11 +15,11 @@ procedure TargetHeader(
 	const padding: Integer
 );
 
-procedure ResultRow(constref tests: TTestSet);
+procedure ResultRow(constref tests: TResultsSet);
 
 procedure Summary(
 	constref targets: TStringDynArray;
-	constref tests: TTestSet;
+	constref tests: TResultsSet;
 	const padding: Integer
 );
 
@@ -67,7 +67,7 @@ begin
 	end;
 end;
 
-procedure ResultRow(constref tests: TTestSet);
+procedure ResultRow(constref tests: TResultsSet);
 var
 	test: TTestResults;
 	status: TStatus;
@@ -83,7 +83,7 @@ begin
 	end;
 end;
 
-function CountStatus(const countee: TStatus; constref tests: TTestSet): Integer;
+function CountStatus(const countee: TStatus; constref tests: TResultsSet): Integer;
 var
 	test: TTestResults;
 	status: TStatus;
@@ -98,7 +98,7 @@ end;
 
 procedure Summary(
 	constref targets: TStringDynArray;
-	constref tests: TTestSet;
+	constref tests: TResultsSet;
 	const padding: Integer
 );
 var
@@ -107,7 +107,7 @@ var
 	procedure StatusLine(
 		const status: TStatus;
 		const color: String;
-		constref tests: TTestSet
+		constref tests: TResultsSet
 	);
 	begin
 		WriteLn('    -> ', CountStatus(status, tests), ' × ',

@@ -25,7 +25,9 @@ type
 		status: TStatusDynArray;
 	end;
 
-	TTestSet = array of TTestResults;
+	TResultsSet = array of TTestResults;
+
+{$i tests.inc}
 
 implementation
 
