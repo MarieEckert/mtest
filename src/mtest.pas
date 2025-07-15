@@ -34,7 +34,7 @@ begin
 		end;
 
 		WriteLn(stderr, '    -> compiling');
-		compileResult := Compile(test.source, test.compileArgs);
+		compileResult := Compile(test.source, test.targets[target].compileArgs);
 
 		if not compileResult.success then
 		begin
@@ -45,14 +45,14 @@ begin
 		end;
 
 		result.status[ix] := BuildPassed;
-		if not test.run then
+		if not test.targets[target].run then
 		begin
 			Inc(ix);
 			continue;
 		end;
 
 		Writeln(stderr, '    -> running');
-		runResult := Run(compileResult.bin, test.args);
+		runResult := Run(compileResult.bin, test.targets[target].args);
 
 		if runResult = 0 then
 			result.status[ix] := RunPassed
