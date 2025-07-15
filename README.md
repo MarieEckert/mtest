@@ -15,7 +15,7 @@ artifacts will be written to the same directory as the test source.
 
 ### adding tests
 
-the `tests.inc` file in the root of this repository can be used as a template.
+the `example_tests.inc` file in the root of this repository can be used as a template.
 in here you can add more targets to the `TTarget` enum and append tests into the
 `tests` const array.
 
